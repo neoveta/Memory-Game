@@ -1,16 +1,93 @@
-/*
- * Create a list that holds all of your cards
- */
+// const deck = document.querySelector(".deck");
+// const startOver = document.querySelector(".restart");
+// const moves = document.querySelector(".moves");
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+ // *** I start with the grid
+ //Create an array that holds all of cards pair
+let cardsArray = ["fa fa-diamond",
+"fa fa-paper-plane-o",
+"fa fa-anchor",
+"fa fa-bolt",
+"fa fa-cube",
+"fa fa-leaf",
+"fa fa-bicycle",
+"fa fa-bomb",];
+cardsArray = [...cardsArray, ...cardsArray];
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+let shuffledCards = shuffle(cardsArray); //  Shuffles all cards and store it in a new array
+// let stars = 3;
+let moves = 0;
+// let matches = 0;
+// let time = 0;
+// let startTime;
+
+ 
+
+//function initGame(){
+    const deck = document.querySelector(".deck");
+    let openCards =[];
+    //create the cards
+    for (let i =0; i<shuffledCards.length; i++){
+        const card = document.createElement("li");
+        card.classList.add("card"); //add class for each card in array
+        card.innerHTML = (`<i class="${shuffledCards[i]}"></i>`); //add icons class to each card
+        deck.appendChild(card);
+        
+        card.addEventListener("click", function() {  //add click event for cards
+            
+            //this card is opened
+            if (openCards.length === 1){
+
+                    card.classList.add("open", "show");
+                    openCards.push(card); 
+                
+                    //compare two opened cards
+                if (openCards[0].innerHTML === openCards[1].innerHTML){
+                    openCards[0].classList.add("match");
+                    openCards[1].classList.add("match");
+
+                    openCards = [];
+
+                } 
+                else {
+                    //if no match - remove classes
+                    setTimeout(function(){
+                        openCards.forEach(function(card){
+                            card.classList.remove("open", "show");
+                        });
+                        openCards = [];
+                    }, 1000);   
+                    
+                }
+
+            } 
+            else {
+            //no opened cards
+                card.classList.add("open", "show");
+                openCards.push(this); 
+            }
+            
+            // prevent double click on card
+
+            
+          
+        });   
+    }
+// }
+// initGame();
+console.log(openCards);
+
+
+
+
+
+
+
+
+
+//shuffle the list of cards using the "shuffle" method
+//shuffledArray
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -22,8 +99,13 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
 
-    return array;
+    return array;  
 }
+
+
+
+
+
 
 
 /*
