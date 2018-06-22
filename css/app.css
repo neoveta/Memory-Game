@@ -17,9 +17,9 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Permanent Marker', cursive;
-	font-size: 16px;
+    background:url('../img/soft-blue-background.jpg'); /* Background pattern from http://backgroundcheckall.com/soft-blue-background-2/ */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -93,8 +93,10 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 400px;
     margin-bottom: 10px;
+    font-family: 'Permanent Marker', cursive;
+	font-size: 16px;
 }
 
 .score-panel .stars {
@@ -102,19 +104,30 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    list-style: none;
 }
 
-.score-panel .stars li {
+.restart {
+    float: right;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.stars li {
     list-style: none;
     display: inline-block;
 }
 
-.score-panel .restart {
-    float: right;
-    cursor: pointer;
-}
+
 #timer {
     float: right;
     margin-left: 20px;
-    
+}
+footer {
+    background-color: #02ccba;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
 }

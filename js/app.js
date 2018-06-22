@@ -15,9 +15,10 @@ let moves = 0;
 let time = 0;
 let timer;
 let firstClick =false;
+const deck = document.querySelector(".deck");
 
 //new game initialization
-//function startGame(){
+function startGame(){
     //create deck of cards  
     const deck = document.querySelector(".deck");
     for (let i =0; i<cardsDeck.length; i++){
@@ -26,9 +27,10 @@ let firstClick =false;
         card.innerHTML = (`<i class="${cardsDeck[i]}"></i>`); //add icons class to each card
         deck.appendChild(card);
         clickEv(card); 
+    }
+} 
+startGame();
 
-//} 
-        
 //click event
 function clickEv(card){   
   //document.querySelectorAll("li.card").forEach(function(card){
@@ -76,7 +78,7 @@ function clickEv(card){
             //prevent to open more that two cards at one step
         });   
     }
-}
+
 //function for "stars" functionality. Remove star related to number of steps
 function starRemove() {
     if (moves === 10 || moves === 15 || moves === 20 ) {
