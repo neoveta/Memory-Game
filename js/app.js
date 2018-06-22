@@ -7,48 +7,40 @@ let cardsArray = ["fa fa-diamond",
 "fa fa-leaf",
 "fa fa-bicycle",
 "fa fa-bomb",];
-cardsArray = [...cardsArray, ...cardsArray];
-
-let shuffledCards = shuffle(cardsArray); //  Shuffles all cards and store it in a new array
+let cardsDeck = shuffle(cardsArray.concat(cardsArray)); //  Shuffles all cards and store them in a new array
 let openCards =[];
 let matchedCards = [];
 let stars = 3;
 let moves = 0;
 let time = 0;
-var timer;
+let timer;
 let firstClick =false;
 
-
+//new game initialization
 //function startGame(){
-    //deck = shuffle(cardsArray); //maybe better to shaffle cards here?
-    //cardsDeck(deck) //call function to create deck of cards
-    //moves?
-    //resetMoves?
-    //matchedCards = []; ?
-//} 
-   //add function cardsDeck(deck)??
-    const deck = document.querySelector(".deck"); //TODO need to improve it
-    //create the cards list 
-    for (let i =0; i<shuffledCards.length; i++){
+    //create deck of cards  
+    const deck = document.querySelector(".deck");
+    for (let i =0; i<cardsDeck.length; i++){
         const card = document.createElement("li");
         card.classList.add("card"); //add class for each card in array
-        card.innerHTML = (`<i class="${shuffledCards[i]}"></i>`); //add icons class to each card
+        card.innerHTML = (`<i class="${cardsDeck[i]}"></i>`); //add icons class to each card
         deck.appendChild(card);
+        clickEv(card); 
+
+//} 
         
-
-//function cardClicked(){   
+//click event
+function clickEv(card){   
   //document.querySelectorAll("li.card").forEach(function(card){
-    card.addEventListener("click", function() {  //add click event for cards TODO:need to improve
-        movesCounter(); //counting the moves after each click on card
-        //this card is opened
+    card.addEventListener("click", function() {  //add click event for cards
+        //myTimer();
+         //open card
         if (openCards.length ===1){
+            card.classList.add("open", "show");
+            openCards.push(card); 
+            movesCounter(); //counting the moves after two cards that were opened 
 
-                card.classList.add("open", "show");
-                openCards.push(card); 
-             
-//});               
-            //function matchCards(card)        
-                    //compare two opened cards
+                //compare two opened cards
                 if (openCards[0].innerHTML == openCards[1].innerHTML){
                     openCards[0].classList.add("match");
                     openCards[1].classList.add("match");
@@ -61,14 +53,14 @@ let firstClick =false;
 
                 } 
                 else {
-                    //if no match - remove classes
+                    //Wait 800ms then : if no match - remove classes.
                     setTimeout(function(){
                         openCards.forEach(function(card){
                             card.classList.remove("open", "show");
                         });
                         openCards = []; //reset array
                         //TODO card.removeEventListener()
-                    }, 1000);   
+                    }, 800);   
                     
                 }
 
@@ -81,54 +73,58 @@ let firstClick =false;
             }
             //prevent double click on card 
             // ??? card.classList.toggle("disabled"); 
-            //
-            
             //prevent to open more that two cards at one step
         });   
     }
-
-
- //create function that indicates that the game is over (all cards opened)
-function gameOver(){
-   if(matchedCards.length === cardsArray.length){ // let matchedCards =[]; if(matchedCards === 16)
-       alert("Game is Won!");
-   }
 }
-
 //function for "stars" functionality. Remove star related to number of steps
 function starRemove() {
-    if (moves === 16 || moves === 20 || moves === 25 ) {
+    if (moves === 10 || moves === 15 || moves === 20 ) {
        let allStars = document.querySelectorAll("ul.stars li")
        document.querySelector("ul.stars").removeChild(allStars[0]);         
     }
 }
 
-function movesCounter(){    
-    moves++;    
+function movesCounter(){      
     let nextMove = document.querySelector('.moves');
-    nextMove.innerHTML = moves;
+    moves++;
+    nextMove.innerHTML = moves; 
     starRemove();
 }
 
 
-function myTimer(){
-    timer = setInterval(function(){
-    time++;
-//console.log(time);
-    },1000);
-}
-function resetTimer(){
-    clearInterval(timer);
-}
+
+// function myTimer(){
+//     timer = setInterval(function(){
+//     time++;
+//const minutes = Math.floor(time / 60);
+//const seconds = time % 60;
+// //console.log(time);
+//     },1000);
+// }
+// function resetTimer(){
+//     clearInterval(timer);
+// }
 
 let resetBtn = document.getElementById("btn");
 resetBtn.addEventListener("click", function(){
-    resetTimer();
-    myTimer();
-    
+    // resetTimer();
+    // myTimer();
+    moves = 0;
+    openCards = [];
+    stars = 3;  
+//remove all cards from desk - open, show, match
+//for (let i =0; i<shuffledCards.length; i++){
+    //card.classList.remove("open", "show", "match");
+//}
 });
 
-
+ //create function that indicates that the game is over (all cards opened)
+ function gameOver(){
+    if(matchedCards.length === cardsArray.length){ // let matchedCards =[]; if(matchedCards === 16)
+        alert("Game is Won!");
+    }
+ }
 
 //shuffle the list of cards using the "shuffle" method
 function shuffle(array) {
