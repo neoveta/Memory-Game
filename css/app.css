@@ -14,6 +14,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
 }
 
 h1 {
-    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 40px;
     letter-spacing: 5px;
     text-align: center;
     border-bottom: 3px solid black;
@@ -83,19 +84,19 @@ h1 {
     background: #02ccba;
     font-size: 33px;
 }
-/* .deck .card.disabled {
+
+ .deck .card.disable {
 	pointer-events: none;
-	opacity: 0.9;
-} */
+} 
+
 /*
  * Styles for the Score Panel
  */
-
 .score-panel {
     text-align: left;
-    width: 400px;
+    width: 600px;
+    padding-left: 20px;
     margin-bottom: 10px;
-    font-family: 'Permanent Marker', cursive;
 	font-size: 16px;
 }
 
@@ -110,7 +111,7 @@ h1 {
 .restart {
     float: right;
     cursor: pointer;
-    margin-left: 20px;
+  
 }
 
 .stars li {
@@ -119,15 +120,41 @@ h1 {
 }
 
 
-#timer {
-    float: right;
-    margin-left: 20px;
-}
+/*
+ * Styles for the footer
+ */
 footer {
     background-color: #02ccba;
     width: 100%;
     bottom: 0;
     position: fixed;
-    text-align: center;
-    font-family: 'Permanent Marker', cursive;
+    text-align: center;    
 }
+
+/*
+ * Styles for the modal
+ */
+.modal {
+    display: none;
+ }
+
+ .modalshow {
+    position: absolute !important;
+    z-index: 1;
+    align-self: center;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(152, 218, 230);
+    border-style: ridge ; 
+ }
+
+ .win-text{ 
+    font-size: 25px;
+ }
+
+ .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+  } 
