@@ -86,12 +86,11 @@ function buildStars(stars){     //the function to remove stars related to the mo
     let st = ''; 
     for(var i =0; i < stars; ++i)
         st += star;
-
     allStars.innerHTML = st;
 }
 buildStars(3);
 
-function  starRemove(){
+function  starRemove(){  //remove stars according to moves
      if(moves > 10 && moves <= 15){
         buildStars(2);
     } else if(moves > 15 && moves <= 20){
@@ -115,11 +114,10 @@ function myTimer(){
     },1000);
 }
 function resetTimer(){
-    minutes = 0;
     seconds = 0;
     minutesIcon.innerHTML = "00";
     secondsIcon.innerHTML = "00";
-    updateTimer = true
+    updateTimer = undefined;
 }
 function stopTimer() {    //function to clearInterval to stop the timer.
       clearInterval(updateTimer); 
@@ -131,6 +129,7 @@ restartIcon.addEventListener("click", function(){
     moves = 0;
     deck.innerHTML ="";    //remove all cards from desk - open, show, match
     startGame();     //call the function to create the deck with cards
+    stopTimer();
     resetTimer();
     nextMove.innerHTML =0;  //reset moves to start over
     buildStars(3);
