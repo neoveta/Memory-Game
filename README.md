@@ -9,7 +9,6 @@ JavaScript - the source code uses ES6 sytax
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Contributing](#contributing)
 
 ## Instructions
 How to Play
@@ -25,6 +24,3 @@ Download the repository, and open index.html in the brower.
 * If you find all eight pairs of cards less than 10 moves your star rating will be indicated as three stars. After 10 moves   your star rating will be two stars, and after 15 moves and more - one star.
 
 * You can restart the game at any time by clicking the reset button situated on the upper right side of the game board.
-
-
-
