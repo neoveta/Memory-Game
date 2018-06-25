@@ -127,6 +127,7 @@ function stopTimer() {    //function to clearInterval to stop the timer.
 //restart game 
 const restartIcon = document.querySelector(".restart");
 restartIcon.addEventListener("click", function(){
+    openCards = [];   //reset array
     moves = 0;
     deck.innerHTML ="";    //remove all cards from desk - open, show, match
     startGame();     //call the function to create the deck with cards
