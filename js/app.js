@@ -7,7 +7,7 @@ let cardsArray = ["fa fa-diamond",
 "fa fa-leaf",
 "fa fa-bicycle",
 "fa fa-bomb",];
-let cardsDeck = shuffle(cardsArray.concat(cardsArray)); //  Shuffles all cards and store them in a new array
+let cardsDeck = cardsArray.concat(cardsArray); //  Shuffles all cards and store them in a new array
 let openCards =[];
 let matchedCards = [];
 let moves = 0;
@@ -26,7 +26,8 @@ const timer = document.getElementById('timer');
 
 function startGame(){   //the new game initialization
     //create deck of cards  
-    for (let i =0; i<cardsDeck.length; i++){
+    let shuffleArr = shuffle(cardsDeck) ;
+    for (let i =0; i<shuffleArr.length; i++){
         const card = document.createElement("li");
         card.classList.add("card");     //add class for each card in array
         card.innerHTML = (`<i class="${cardsDeck[i]}"></i>`);   //add icons class to each card

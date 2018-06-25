@@ -6,6 +6,9 @@ HTML5
 CSS3
 JavaScript - the source code uses ES6 sytax
 
+Used Bootstrap https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+Used Google Fonts from https://fonts.googleapis.com/css?family=Coda
+
 ## Table of Contents
 
 * [Instructions](#instructions)
